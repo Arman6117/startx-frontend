@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="2000" height="1500" viewBox="0 0 2000 1500">
+  <!-- Background -->
+  <path fill="#111" stroke="transparent" d="M0 0h2000v1500H0z"/>
+  
+  <!-- Letter S -->
+  <g transform="translate(1000, 750) scale(2.6)">
+    <path fill="#c6d2ff" d="M120.5 -160.5 c-20 -25 -60 -45 -110 -45 c-95 0 -155 60 -155 140 c0 95 75 120 155 145 c65 20 90 40 90 80 c0 45 -40 70 -100 70 c-65 0 -110 -30 -120 -75 h-110 c10 90 85 160 230 160 c110 0 210 -60 210 -160 c0 -95 -80 -125 -160 -150 c-60 -20 -85 -40 -85 -75 c0 -40 35 -60 90 -60 c55 0 90 25 100 60 h110 z" transform="translate(-75, -25)"/>
+  </g>
+</svg>
