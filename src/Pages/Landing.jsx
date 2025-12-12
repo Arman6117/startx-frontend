@@ -76,7 +76,7 @@ const Landing = () => {
       <Hero />
       <TextParallaxContentExample />
    
-      <Contact />
+      {/* <Contact /> */}
       <Footer />
     </PageBackgroundHighlight>
   );

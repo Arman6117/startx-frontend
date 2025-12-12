@@ -184,14 +184,14 @@ const ViewJobModal = ({ job, onClose }) => {
                 </div>
               </div>
 
-              <button
-                onClick={exportToExcel}
+              {/* <button */}
+                {/* onClick={exportToExcel}
                 disabled={applicants.length === 0}
                 className="flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
               >
                 <FileSpreadsheet className="w-5 h-5" />
                 Export to Excel
-              </button>
+              </button> */}
             </div>
 
             {loading ? (
