@@ -21,7 +21,11 @@ const Navbar = () => {
   const userName = localStorage.getItem("userName");
   const userRole = localStorage.getItem("userRole");
 
-  const userInitial = userName ? userName.charAt(0).toUpperCase() : (email ? email.charAt(0).toUpperCase() : "");
+  // Fallback: Use email if userName is null/undefined/empty
+  const displayName = userName || email || "User";
+  
+  // Get initial from displayName
+  const userInitial = displayName ? displayName.charAt(0).toUpperCase() : "U";
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -107,7 +111,7 @@ const Navbar = () => {
                 <div className="flex flex-col items-start">
                   <span className="text-xs text-gray-500 font-medium leading-none mb-0.5">Welcome</span>
                   <span className={`text-sm font-bold leading-none ${userRole === 'recruiter' ? 'text-pink-600' : 'text-blue-600'}`}>
-                    {userName}
+                    {displayName}
                   </span>
                 </div>
                 <ChevronDown size={16} className="text-gray-400" />
@@ -122,8 +126,10 @@ const Navbar = () => {
                     className="absolute right-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden"
                   >
                     <div className="p-4 border-b border-gray-100 bg-gray-50/50">
-                      <p className="text-sm font-bold text-gray-800 mb-1">{userName}</p>
-                      <p className="text-xs text-gray-500 truncate">{email}</p>
+                      <p className="text-sm font-bold text-gray-800 mb-1">{displayName}</p>
+                      {email && (
+                        <p className="text-xs text-gray-500 truncate">{email}</p>
+                      )}
                       <div className="mt-2">
                         {getRoleBadge()}
                       </div>
@@ -177,8 +183,10 @@ const Navbar = () => {
                       {userInitial}
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-gray-800">{userName}</p>
-                      <p className="text-xs text-gray-500">{email}</p>
+                      <p className="text-sm font-bold text-gray-800">{displayName}</p>
+                      {email && (
+                        <p className="text-xs text-gray-500">{email}</p>
+                      )}
                       {getRoleBadge()}
                     </div>
                   </div>
