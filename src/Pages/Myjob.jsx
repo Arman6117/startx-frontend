@@ -275,7 +275,7 @@ const Myjob = () => {
                               <td className="px-4 py-4 text-slate-300">{job.jobLocation}</td>
                               <td className="px-4 py-4">
                                 <span className="text-green-400 font-semibold">
-                                  ${job.minPrice} - ${job.maxPrice}
+                                  ₹{job.minPrice} - ₹{job.maxPrice}
                                 </span>
                               </td>
                               <td className="px-4 py-4">

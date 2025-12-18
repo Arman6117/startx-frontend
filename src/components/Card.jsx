@@ -96,7 +96,7 @@ const Card = ({ data }) => {
                   <DollarSign className='w-4 h-4 text-green-400' />
                 </div>
                 <span className='text-slate-300'>
-                  ${minPrice}-${maxPrice} {salaryType}
+                  ₹{minPrice}-₹{maxPrice} {salaryType}
                 </span>
               </div>
 

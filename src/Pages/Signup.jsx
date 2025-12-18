@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { AtSign, Lock, ArrowRight, Sparkles, CheckCircle2, ShieldCheck, Briefcase, GraduationCap } from "lucide-react"; 
+import { AtSign, Lock, ArrowRight, Sparkles, CheckCircle2, ShieldCheck, Briefcase, GraduationCap, User } from "lucide-react"; 
 import { toast, Toaster } from 'react-hot-toast';
 import { motion, AnimatePresence } from "framer-motion";
 import ClipLoader from "react-spinners/ClipLoader";
 
 const SignUp = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [role, setRole] = useState("student"); // Default state
+  const [role, setRole] = useState("student");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -40,6 +41,7 @@ const SignUp = () => {
 
     try {
       await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/signup`, {
+        name,
         email,
         password,
         role 
@@ -64,7 +66,6 @@ const SignUp = () => {
     }
   };
 
-  // Dynamic Content based on Role
   const roleContent = {
     student: {
       title: "Start Your Career",
@@ -102,7 +103,6 @@ const SignUp = () => {
     <div className={`min-h-screen relative bg-gradient-to-br ${currentContent.bgGradient} flex items-center justify-center p-4 overflow-hidden transition-colors duration-700`}>
       <Toaster position="top-center" reverseOrder={false} />
       
-      {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className={`absolute -top-40 -right-40 w-96 h-96 rounded-full blur-3xl animate-pulse opacity-20 bg-${currentContent.color}-500`} />
         <div className={`absolute bottom-0 left-0 w-96 h-96 rounded-full blur-3xl animate-pulse delay-1000 opacity-20 bg-${role === 'student' ? 'purple' : 'blue'}-500`} />
@@ -111,7 +111,7 @@ const SignUp = () => {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
       
       <motion.div 
-        key={role} // Triggers animation on role switch
+        key={role}
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4 }}
@@ -167,10 +167,10 @@ const SignUp = () => {
             </div>
           </div>
 
-          {/* Right Side - Form & Toggle */}
+          {/* Right Side - Form */}
           <div className="p-8 md:p-12 flex flex-col justify-center relative">
             
-            {/* Role Toggle Switch */}
+            {/* Role Toggle */}
             <div className="absolute top-8 right-8 bg-slate-800/50 p-1 rounded-xl border border-white/10 flex">
               <button
                 onClick={() => setRole('student')}
@@ -197,6 +197,23 @@ const SignUp = () => {
               )}
               
               <form onSubmit={handleSignUp} className="space-y-5">
+                {/* Name Field */}
+                <div className="space-y-1">
+                  <label className="text-sm font-semibold text-slate-300">Full Name</label>
+                  <div className="relative">
+                    <User className="absolute left-4 top-3.5 h-5 w-5 text-slate-500" />
+                    <input
+                      type="text"
+                      placeholder="John Doe"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="w-full pl-12 pr-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-white/30 transition-all"
+                      required
+                    />
+                  </div>
+                </div>
+
+                {/* Email Field */}
                 <div className="space-y-1">
                   <label className="text-sm font-semibold text-slate-300">Email Address</label>
                   <div className="relative">
@@ -212,6 +229,7 @@ const SignUp = () => {
                   </div>
                 </div>
                 
+                {/* Password Field */}
                 <div className="space-y-1">
                   <label className="text-sm font-semibold text-slate-300">Password</label>
                   <div className="relative">
@@ -227,6 +245,7 @@ const SignUp = () => {
                   </div>
                 </div>
                 
+                {/* Confirm Password Field */}
                 <div className="space-y-1">
                   <label className="text-sm font-semibold text-slate-300">Confirm Password</label>
                   <div className="relative">

@@ -1,12 +1,9 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import TextParallaxContentExample from '../components/Features';
-import { InfiniteMovingCardsDemo } from '../components/Testimonials';
-import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import { useMotionValue, motion, useMotionTemplate } from 'framer-motion';
 import { cn } from '../libs/utils';
-import DeveloperSection from '../components/Developers';
 
 // Redesigned Background Highlight Component
 export const PageBackgroundHighlight = ({ children, className }) => {

@@ -14,7 +14,6 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   
-  // 1. GET THE INTENDED ROLE FROM NAVIGATION STATE
   const initialRole = location.state?.defaultRole || "student";
   const [viewMode, setViewMode] = useState(initialRole); 
   
@@ -30,6 +29,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     setError("");
+    
     try {
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/signin`, {
         email,
@@ -38,13 +38,12 @@ const Login = () => {
   
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('email', response.data.email);
+      localStorage.setItem('userName', response.data.name);
       
-      // SAVE ROLE
       if (response.data.role) {
         localStorage.setItem('userRole', response.data.role);
       }
   
-      // Expiration Logic
       const expiresIn = response.data.expiresIn;
       let expirationTime = new Date().getTime() + 1 * 60 * 60 * 1000; 
       if (expiresIn && expiresIn.includes('h')) {
@@ -84,7 +83,6 @@ const Login = () => {
   return (
     <div className={`min-h-screen relative bg-gradient-to-br ${currentTheme.bg} flex items-center justify-center p-4 overflow-hidden transition-colors duration-700`}>
       
-      {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className={`absolute -top-40 -right-40 w-96 h-96 rounded-full blur-3xl animate-pulse opacity-20 bg-${currentTheme.color}-500`} />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
@@ -99,13 +97,12 @@ const Login = () => {
       >
         <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 shadow-2xl rounded-3xl overflow-hidden grid grid-cols-1 md:grid-cols-2 min-h-[600px]">
           
-          {/* Left Side - Visuals */}
           <div className="hidden md:flex relative p-12 flex-col justify-between bg-slate-900/40">
             <div className={`absolute inset-0 bg-gradient-to-br ${currentTheme.gradient} opacity-10`} />
             
             <div className="relative z-10">
               <div className="flex items-center gap-2 text-2xl font-bold text-white mb-12">
-                <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${currentTheme.gradient} flex items-center justify-center`}>T</div>
+                <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${currentTheme.gradient} flex items-center justify-center`}>S</div>
                 STARTX
               </div>
               
@@ -119,7 +116,6 @@ const Login = () => {
               </motion.div>
             </div>
 
-            {/* Visual Role Switcher */}
             <div className="relative z-10 bg-white/5 backdrop-blur-md p-4 rounded-2xl border border-white/10">
               <p className="text-sm text-slate-400 mb-3">Not a {viewMode}? Switch view:</p>
               <div className="flex gap-2">
@@ -139,7 +135,6 @@ const Login = () => {
             </div>
           </div>
 
-          {/* Right Side - Login Form */}
           <div className="p-8 md:p-12 flex flex-col justify-center">
             <div className="w-full max-w-md mx-auto">
               <h2 className="text-3xl font-bold text-white mb-2">Login</h2>

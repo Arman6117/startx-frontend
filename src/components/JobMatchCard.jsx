@@ -36,7 +36,7 @@ const JobMatchCard = ({ job, index, openApplicationModal }) => (
 
     <div className="grid grid-cols-2 gap-3 mb-4">
       <div className="flex items-center gap-2 text-sm text-slate-300"><MapPin className="w-4 h-4 text-blue-400" /> {job.jobLocation}</div>
-      <div className="flex items-center gap-2 text-sm text-slate-300"><DollarSign className="w-4 h-4 text-green-400" /> ${job.minPrice} - ${job.maxPrice}</div>
+      <div className="flex items-center gap-2 text-sm text-slate-300"><DollarSign className="w-4 h-4 text-green-400" /> ₹{job.minPrice} - ₹{job.maxPrice}</div>
       <div className="flex items-center gap-2 text-sm text-slate-300"><Clock className="w-4 h-4 text-purple-400" /> {job.employmentType}</div>
       <div className="flex items-center gap-2 text-sm text-slate-300"><Briefcase className="w-4 h-4 text-orange-400" /> {job.experienceLevel}</div>
     </div>

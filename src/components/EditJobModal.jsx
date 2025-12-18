@@ -4,7 +4,7 @@ import CreatableSelect from "react-select/creatable";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Save, Briefcase, Building2, MapPin, DollarSign, Calendar, Tag } from "lucide-react";
+import { X, Save, Briefcase, Building2, MapPin, DollarSign,IndianRupee , Calendar, Tag } from "lucide-react";
 
 const EditJobModal = ({ job, onClose, onSave }) => {
   const [selectedOption, setSelectedOption] = useState(
@@ -207,20 +207,20 @@ const EditJobModal = ({ job, onClose, onSave }) => {
                 </InputField>
 
                 {/* Minimum Salary */}
-                <InputField icon={DollarSign} label="Minimum Salary" error={errors.minPrice}>
+                <InputField icon={IndianRupee } label="Minimum Salary" error={errors.minPrice}>
                   <input
                     type="text"
-                    placeholder="$50,000"
+                    placeholder="₹50,000"
                     {...register("minPrice", { required: "Minimum Salary is required" })}
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:border-blue-500/50 transition-all"
                   />
                 </InputField>
 
                 {/* Maximum Salary */}
-                <InputField icon={DollarSign} label="Maximum Salary" error={errors.maxPrice}>
+                <InputField icon={IndianRupee } label="Maximum Salary" error={errors.maxPrice}>
                   <input
                     type="text"
-                    placeholder="$80,000"
+                    placeholder="₹80,000"
                     {...register("maxPrice", { required: "Maximum Salary is required" })}
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:border-blue-500/50 transition-all"
                   />

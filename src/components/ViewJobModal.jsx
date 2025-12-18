@@ -154,7 +154,7 @@ const ViewJobModal = ({ job, onClose }) => {
                 <div>
                   <p className="text-xs text-white/60">Salary Range</p>
                   <p className="text-sm font-semibold text-white">
-                    ${job.minPrice} - ${job.maxPrice}
+                    ₹{job.minPrice} - ₹{job.maxPrice}
                   </p>
                 </div>
               </div>

@@ -191,13 +191,14 @@ const FeatureSection = ({
           
           {/* CTA Button */}
           {isChat ? (
-            <button
-              onClick={handleChatFeatureClick}
-              className={`group relative inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r ${accentColors[accentColor]} border backdrop-blur-sm font-bold text-white shadow-lg ${accentColors[accentColor].split(' ')[0]} transition-all duration-300 hover:scale-105`}
-            >
-              <span>Open Chat Assistant</span>
-              <FiArrowUpRight className="text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </button>
+            // <button
+            //   onClick={handleChatFeatureClick}
+            //   className={`group relative inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r ${accentColors[accentColor]} border backdrop-blur-sm font-bold text-white shadow-lg ${accentColors[accentColor].split(' ')[0]} transition-all duration-300 hover:scale-105`}
+            // >
+            //   <span>Open Chat Assistant</span>
+            //   <FiArrowUpRight className="text-xl group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            // </button>
+            null
           ) : (
             <Link to={linkTo}>
               <button className={`group relative inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r ${accentColors[accentColor]} border backdrop-blur-sm font-bold text-white shadow-lg ${accentColors[accentColor].split(' ')[0]} transition-all duration-300 hover:scale-105`}>

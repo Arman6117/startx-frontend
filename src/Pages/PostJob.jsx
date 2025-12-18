@@ -219,7 +219,7 @@ const PostJob = () => {
                 <input
                   type="text"
                   {...register("minPrice", { required: "Minimum Salary is required." })}
-                  placeholder="$50,000"
+                  placeholder="₹50,000"
                   className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:border-blue-500/50 focus:bg-white/10 transition-all"
                 />
               </InputWrapper>
@@ -228,7 +228,7 @@ const PostJob = () => {
                 <input
                   type="text"
                   {...register("maxPrice", { required: "Maximum Salary is required." })}
-                  placeholder="$80,000"
+                  placeholder="₹80,000"
                   className="w-full px-4 py-3.5 bg-white/5 border border-white/10 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:border-blue-500/50 focus:bg-white/10 transition-all"
                 />
               </InputWrapper>

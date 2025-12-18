@@ -171,7 +171,7 @@ const JobApplicationModal = ({ job, onClose }) => {
                   <div>
                     <p className="text-xs text-slate-400">Salary</p>
                     <p className="text-sm text-white font-medium">
-                      ${minPrice} - ${maxPrice} {salaryType}
+                      ₹{minPrice} - ₹{maxPrice} {salaryType}
                     </p>
                   </div>
                 </div>

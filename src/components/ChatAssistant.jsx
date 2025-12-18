@@ -133,34 +133,6 @@ const TalxChatAssistant = () => {
     }
   };
 
-  const handleVoiceCommand = () => {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SpeechRecognition) {
-      alert('Your browser does not support speech recognition.');
-      return;
-    }
-
-    const recognition = new SpeechRecognition();
-    recognition.continuous = false;
-    recognition.interimResults = false;
-    recognition.lang = 'en-US';
-
-    recognition.onstart = () => setIsListening(true);
-    recognition.onresult = (event) => {
-      const transcript = event.results[0][0].transcript;
-      setInputMessage(transcript);
-      setIsListening(false);
-    };
-    recognition.onerror = () => setIsListening(false);
-    recognition.onend = () => setIsListening(false);
-
-    if (isListening) {
-      recognition.stop();
-    } else {
-      recognition.start();
-    }
-  };
-
   return (
     <div className="fixed bottom-6 right-6 z-50">
       <AnimatePresence>
@@ -268,16 +240,7 @@ const TalxChatAssistant = () => {
                   disabled={isLoading}
                 />
                 
-                <button
-                  onClick={handleVoiceCommand}
-                  className={`p-2.5 rounded-xl transition-all ${
-                    isListening
-                      ? 'bg-red-500 text-white'
-                      : 'bg-slate-800/50 border border-white/10 text-slate-400 hover:text-white hover:bg-slate-700/50'
-                  }`}
-                >
-                  <Mic className="h-5 w-5" />
-                </button>
+                
                 
                 <button
                   onClick={handleSendMessage}
