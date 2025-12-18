@@ -21,11 +21,14 @@ const Navbar = () => {
   const userName = localStorage.getItem("userName");
   const userRole = localStorage.getItem("userRole");
 
-  // Fallback: Use email if userName is null/undefined/empty
-  const displayName = userName || email || "User";
+  // Check if userName is valid (not null, undefined, "null", "undefined", or empty string)
+  const isValidUserName = userName && userName !== "null" && userName !== "undefined" && userName.trim() !== "";
+  
+  // Fallback: Use "User" if userName is invalid
+  const displayName = isValidUserName ? userName : "User";
   
   // Get initial from displayName
-  const userInitial = displayName ? displayName.charAt(0).toUpperCase() : "U";
+  const userInitial = displayName.charAt(0).toUpperCase();
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -127,9 +130,6 @@ const Navbar = () => {
                   >
                     <div className="p-4 border-b border-gray-100 bg-gray-50/50">
                       <p className="text-sm font-bold text-gray-800 mb-1">{displayName}</p>
-                      {email && (
-                        <p className="text-xs text-gray-500 truncate">{email}</p>
-                      )}
                       <div className="mt-2">
                         {getRoleBadge()}
                       </div>
@@ -184,9 +184,6 @@ const Navbar = () => {
                     </div>
                     <div>
                       <p className="text-sm font-bold text-gray-800">{displayName}</p>
-                      {email && (
-                        <p className="text-xs text-gray-500">{email}</p>
-                      )}
                       {getRoleBadge()}
                     </div>
                   </div>
